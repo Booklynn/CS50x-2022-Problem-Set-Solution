@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="align-left">Symbol</th>
+                    <th scope="col" class="align-right">Shares</th>
+                    <th scope="col" class="align-right">Price</th>
+                    <th scope="col" class="align-right">Transacted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for history in histories %}
+                    <tr>
+                        <td class="align-left">{{ history["symbol"] }}</td>
+                        <td class="align-right">{{ history["qty"] }}</td>
+                        <td class="align-right">{{ history["price"] }}</td>
+                        <td class="align-right">{{ history["datetime"] }}</td>
+                     </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

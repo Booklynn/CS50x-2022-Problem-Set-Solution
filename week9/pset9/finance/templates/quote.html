@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="stock-symbol" name="symbol" placeholder="Stock Symbol" type="text" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="align-left">Symbol</th>
+                    <th scope="col" class="align-left">Name</th>
+                    <th scope="col" class="align-right">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="align-left">{{ result_quote["symbol"] }}</td>
+                    <td class="align-left">{{ result_quote["name"] }}</td>
+                    <td class="align-right">{{ result_quote["price"] | usd }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const buttons = document.querySelectorAll('.part-1');
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].addEventListener('click', function(event) {
+                        for (let j = 0; j < buttons.length; j++) {
+                            buttons[j].style.backgroundColor = '';
+                        }
+                        if (buttons[i].innerText == 'Closures') {
+                            event.target.style.backgroundColor = 'green';
+                            document.querySelector('#result-1').innerText = 'Correct!';
+                        } else {
+                            event.target.style.backgroundColor = 'red';
+                            document.querySelector('#result-1').innerText = 'Incorrect';
+                        }
+                    });
+                }
+
+                document.querySelector('.part-2').addEventListener('click', function() {
+                    const input = document.querySelector('input');
+                    if (input.value == 'South America') {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#result-2').innerText = 'Correct!';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#result-2').innerText = 'Incorrect!';
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- Add multiple choice question here -->
+                <h3>Which of the following is a JavaScript feature that allows a function to remember and access its lexical scope even when called outside of that scope?</h3>
+                <p id="result-1"></p>
+                <button class="part-1">Closures</button>
+                <button class="part-1">Prototypes</button>
+                <button class="part-1">Event bubbling</button>
+                <button class="part-1">Promises</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- Add free response question here -->
+                <h3>Where do capybaras originate from?</h3>
+                <p id="result-2"></p>
+                <input autocomplete="off" type="text">
+                <button class="part-2">Check Answer</button>
+            </div>
+        </div>
+    </body>
+</html>
